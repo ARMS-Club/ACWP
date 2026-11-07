@@ -1,0 +1,74 @@
+/* Motion is progressively enhanced: all content remains readable without JavaScript. */
+:root{--motion-ease:cubic-bezier(.22,1,.36,1)}
+.hero h1 .headline-line,.hero h1 .headline-text{display:block;color:inherit}
+.hero h1 .headline-line{overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
+.hero h1 .headline-line:last-child{color:var(--lime)}
+.hero h1 .headline-text{transform-origin:left bottom}
+
+.discipline-strip{display:flex;justify-content:initial;padding:0;gap:0;position:relative;min-height:84px}
+.discipline-window{flex:1;min-width:0;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+.discipline-track{display:flex;width:max-content}
+.discipline-group{display:flex;align-items:center;gap:48px;padding:26px 24px;white-space:nowrap;flex-shrink:0}
+.discipline-group .separator{display:inline-block;font:400 1.65rem/1 var(--mono)}
+.discipline-group[aria-hidden]{display:none}
+
+
+
+
+
+
+
+
+.project-card{animation:none}
+.step-panel>*,.faq-list details p,.path-tab .step-symbol,.card-button .plus{transition:transform .3s var(--motion-ease),color .3s}
+.card-button:hover .plus{transform:rotate(90deg)}
+.path-tab:hover:not(.active) .step-symbol{transform:rotate(90deg)}
+.faq-list summary span{transition:transform .3s var(--motion-ease)}
+.text-link{position:relative;border-bottom-color:transparent}
+.text-link:after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:currentColor;transform-origin:left;transition:transform .3s var(--motion-ease)}
+.text-link:hover:after{transform:scaleX(.65)}
+.button,.nav-join{position:relative;overflow:hidden}
+.button:after,.nav-join:after{content:'';position:absolute;inset:-1px;background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.18) 50%,transparent 80%);transform:translateX(-120%);transition:transform .6s var(--motion-ease);pointer-events:none}
+.button:hover:after,.nav-join:hover:after{transform:translateX(120%)}
+
+@media(prefers-reduced-motion:no-preference){
+  .motion-enabled .headline-text{animation:headline-rise 1s var(--motion-ease) both;animation-delay:.12s}
+  .motion-enabled .headline-line:nth-child(2) .headline-text{animation-delay:.24s}
+  .motion-enabled .headline-line:nth-child(3) .headline-text{animation-delay:.36s}
+  .motion-enabled .hero-content>.eyebrow{animation:soft-rise .7s var(--motion-ease) both}
+  .motion-enabled .hero-description{animation:soft-rise .9s var(--motion-ease) .48s both}
+  .motion-enabled .hero-actions{animation:soft-rise .9s var(--motion-ease) .6s both}
+  .motion-enabled .hero-media{animation:hero-focus 2.4s var(--motion-ease) both}
+  .motion-enabled .hero-caption{animation:soft-rise .8s var(--motion-ease) .7s both}
+  .motion-enabled .discipline-group[aria-hidden]{display:flex}
+  .motion-enabled .discipline-track{animation:discipline-drift 32s linear infinite}
+  .motion-enabled .motion-enter{animation:soft-rise .8s var(--motion-ease) var(--reveal-delay,0ms) both}
+  .motion-enabled .panel-enter{animation:panel-rise .4s var(--motion-ease) both}
+  .motion-enabled .faq-list details[open] p{animation:panel-rise .35s var(--motion-ease) both}
+  .motion-enabled .flow-connector{position:relative;overflow:hidden}
+  .motion-enabled .flow-connector:after{content:'';position:absolute;inset:0;background:var(--accent);transform:translateX(-100%)}
+  .motion-enabled .project-card:hover .flow-connector:after,.motion-enabled .project-card:focus-within .flow-connector:after{animation:signal-pass 1s ease 2}
+  .ticker-away .discipline-track,.page-away .discipline-track{animation-play-state:paused!important}
+  @keyframes headline-rise{from{opacity:.3;transform:translateY(115%) rotate(2deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
+  @keyframes soft-rise{from{opacity:0;translate:0 25px}to{opacity:1;translate:0 0}}
+  @keyframes panel-rise{from{opacity:0;translate:0 10px}to{opacity:1;translate:0 0}}
+  @keyframes hero-focus{from{opacity:.3;transform:scale(1.045)}to{opacity:1;transform:scale(1)}}
+  @keyframes discipline-drift{to{transform:translateX(-50%)}}
+  @keyframes signal-pass{to{transform:translateX(110%)}}
+}
+
+/* In the static version the full discipline names wrap instead of being cropped. */
+html:not(.motion-enabled) .discipline-window{mask-image:none}
+html:not(.motion-enabled) .discipline-track{width:auto}
+html:not(.motion-enabled) .discipline-group{flex-wrap:wrap;gap:14px 25px;white-space:normal;justify-content:center;width:100%}
+html:not(.motion-enabled) .discipline-group .separator:last-child{display:none}
+@media(max-width:900px){.discipline-group{gap:32px}}
+@media(max-width:650px){
+  .discipline-strip{min-height:76px;display:flex}
+  .discipline-group{font-size:.78rem;padding:23px 16px;gap:30px}
+  
+  html:not(.motion-enabled) .discipline-strip{align-items:stretch}
+  html:not(.motion-enabled) .discipline-group{display:block;padding:18px 6%;font-size:.7rem}
+  html:not(.motion-enabled) .discipline-group>span:not(.separator){display:block;padding:3px 0}
+  html:not(.motion-enabled) .discipline-group .separator{display:none}
+}

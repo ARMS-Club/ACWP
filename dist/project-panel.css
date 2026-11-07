@@ -1,0 +1,41 @@
+/* Project briefs share the page with the sphere, without an overlay. */
+.hero-content,.project-inspector{grid-column:1;grid-row:1}
+.project-universe{grid-column:2;grid-row:1}
+.project-inspector{position:relative;z-index:2;min-width:0;align-self:center;margin:30px 16px 34px 10.3%;padding:0 0 0 23px;border-left:1px solid var(--brand-blue);--brief-accent:var(--lime)}
+.project-inspector[data-area=robotics]{--brief-accent:var(--cyan)}
+.project-inspector[data-area=mechanical]{--brief-accent:var(--orange)}
+.inspector-toolbar{display:flex;justify-content:space-between;gap:16px;min-height:35px;margin-bottom:23px;align-items:center}
+.inspector-toolbar button{background:none;border:0;border-bottom:1px solid var(--line);padding:3px 0;color:var(--muted);font:500 .75rem/1.5 var(--body)}
+.inspector-toolbar button:hover{color:var(--lime);border-color:var(--lime)}
+.project-inspector .eyebrow{color:var(--brief-accent);font-size:.68rem;letter-spacing:.05em;white-space:normal;margin-bottom:18px}
+.project-inspector .inspector-title{font:700 clamp(2.6rem,3.7vw,3.4rem)/1.02 var(--head);letter-spacing:-.01em;margin:0 0 19px;max-width:490px;color:var(--text)}
+.project-inspector p,.project-inspector li{font:400 .88rem/1.55 var(--body);color:var(--muted)}
+.project-inspector .inspector-description{color:var(--text);font-size:.96rem;margin-bottom:20px}
+.project-inspector h3{font:500 .66rem/1.5 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--brief-accent);margin:0 0 8px}
+.inspector-first{border-left:2px solid var(--brief-accent);padding:3px 0 3px 15px;margin:0 0 21px}
+.inspector-first p,.inspector-output p{margin:0}
+.inspector-tasks{padding-left:17px;margin:0 0 21px}
+.inspector-tasks li{padding-left:3px;margin:0 0 5px}
+.inspector-tasks li::marker{color:var(--brand-blue)}
+.inspector-output{border-top:1px solid var(--line);padding-top:15px;margin-bottom:19px}
+.project-inspector .inspector-skills{font-size:.8rem;margin-bottom:21px}
+.inspector-start{padding:12px 19px;min-height:46px;font-size:.86rem}
+.project-inspector .inspector-note{font-size:.7rem;line-height:1.6;margin:14px 0 0;color:var(--muted);max-width:390px}
+.typed-line{position:relative}
+.typed-reserve{visibility:hidden}
+.typed-visual{position:absolute;inset:0;display:block}
+.typed-visual.is-writing:after{content:'';display:inline-block;width:2px;height:.9em;margin-left:4px;background:var(--brief-accent);vertical-align:-.06em;animation:typing-caret .7s steps(1) infinite}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
+@keyframes typing-caret{50%{opacity:0}}
+@media(min-width:1500px){.project-inspector{margin-block:48px}.project-inspector p,.project-inspector li{font-size:.95rem}}
+@media(max-width:1100px) and (min-width:921px){.project-inspector{margin-left:9%;padding-left:16px;margin-right:8px}.project-inspector .inspector-title{font-size:2.6rem}}
+@media(max-width:920px){
+ .hero.has-project .project-universe{order:0;margin-top:28px}
+ .project-inspector{order:1;margin:28px 6% 20px;padding-left:20px;align-self:stretch;scroll-margin-top:110px}
+ .project-inspector .inspector-title{font-size:clamp(2.7rem,6.7vw,4rem);max-width:600px}
+ .project-inspector p,.project-inspector li{font-size:.95rem}
+ .project-inspector .inspector-note{max-width:550px}
+ .hero.has-project .hero-caption{display:none}
+}
+@media(max-width:480px){.project-inspector{padding-left:15px;scroll-margin-top:93px}.project-inspector .inspector-title{font-size:2.8rem}.inspector-toolbar{gap:10px}.project-inspector p,.project-inspector li{font-size:.9rem}}
+@media(prefers-reduced-motion:reduce){.typed-visual.is-writing:after{animation:none}}
